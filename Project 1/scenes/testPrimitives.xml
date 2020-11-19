@@ -1,0 +1,135 @@
+<lxs>
+    <scene root="demoRoot" axis_length="5"/>
+
+    <views default="defaultCamera">
+        <perspective id="defaultCamera" near="0.1" far="500" angle="45">
+            <from x="30" y="15" z="30" />
+            <to x="0" y="-2" z="0" />
+        </perspective>
+
+        <perspective id="Perspective1" near="0.1" far="500" angle="45 ">
+            <from x="-10" y="10" z="10" />
+            <to x="0" y="-2" z="0" />
+        </perspective>
+
+        <ortho id="testOrtho"  near="0.1" far="500" left="100" right="100" top="100" bottom="100" >
+            <from x="30" y="15" z="30" />
+            <to x="0" y="-2" z="0" />
+            <up x="0" y="-2" z="3" /> 
+        </ortho>
+    </views>
+
+    <globals>
+        <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+        <background r="0.0" g="0.0" b="0.0" a="1.0" />
+    </globals>
+
+    <lights>
+        <omni id="demoLight" enabled="1">
+            <location x="9.8" y="11.9" z="10" w="1.0" />
+            <ambient r="0" g="0" b="0" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+        </omni>
+
+        <spot id="demoSpot" enabled="1" angle="45" exponent="2">
+            <location x="-2" y="3" z="3" w="1.0"/>
+            <target x="1" y="1" z="1.0" />
+            <ambient r="0" g="0" b="0" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="0" a="1.0" />
+            <specular r="1.0" g="1.0" b="0" a="1.0" />
+            <attenuation constant="3" linear="0" quadratic="0" />
+        </spot>
+    </lights>
+
+    <textures>
+        <texture id="demoTexture" file="scenes/images/vidral.jpg" />
+    </textures>
+
+    <materials>
+        <material id="demoMaterial" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="1.0" g="0.0" b="0.0" a="1.0" />
+            <diffuse r="0.6" g="0.0" b="0.0" a="1.0" />
+            <specular r="0.6" g="0.0" b="0.0" a="1.0" />
+        </material>
+
+        <material id="mat1" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.0" g="0.5" b="0.0" a="1.0" />
+            <diffuse r="0.0" g="0.9" b="0.0" a="1.0" />
+            <specular r="0.0" g="0.3" b="0.0" a="1.0" />
+        </material>
+
+        <material id="mat2" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.0" g="0.0" b="0.5" a="1.0" />
+            <diffuse r="0.0" g="0.0" b="0.9" a="1.0" />
+            <specular r="0.0" g="0.0" b="0.3" a="1.0" />
+        </material>
+    </materials>
+
+    <transformations>
+        <transformation id="demoTransform">
+            <scale x="2" y="1" z="2" />
+            <rotate axis="x" angle="-45" />
+            <rotate axis="z" angle="-45" />
+            <translate x="3" y="2" z="1" />
+        </transformation>
+    </transformations>
+
+    <primitives>
+        <primitive id="demoRectangle">
+            <rectangle x1="-0.5" y1="-1" x2="0.5" y2="1" />
+        </primitive>
+
+        <primitive id="demoTriangle">
+            <triangle x1="1" y1="0" z1="0" x2="2" y2="2" z2="2" x3="0" y3="0" z3="3"/>
+        </primitive>
+
+        <primitive id="demoCylinder">
+            <cylinder base="3" top="3" height="4" slices="20" stacks="5"/>
+        </primitive>
+
+        <primitive id="demoSphere">
+            <sphere radius="3" stacks="50" slices="50"/>
+        </primitive>
+
+        <primitive id="demoTorus">
+            <torus inner="2" outer="5" slices="40" loops="20"/>
+        </primitive>
+    </primitives>
+
+    <components>
+        <component id="demoRoot">
+            <transformation>
+                <!-- <translate x="0" y="0" z="1" />
+                <scale x="2" y="1" z="1" /> -->
+            </transformation>
+            <materials>
+                <material id="demoMaterial"/>
+                <material id="mat1"/>
+                <material id="mat2"/>
+                <material id="inherit"/>
+            </materials>
+            <texture id="inherit" length_s="1" length_t="1"/>
+            <children>
+                <componentref id="test" />
+            </children>
+        </component>
+
+        <component id="test">
+            <transformation>
+            <!-- nothing -->
+            </transformation>
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="demoTexture" length_s="0.8" length_t="0.8"/>
+            <children>
+                <primitiveref id="demoTriangle"/>
+            </children>
+        </component>
+    </components>
+</lxs>

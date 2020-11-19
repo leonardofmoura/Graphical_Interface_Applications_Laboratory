@@ -1,0 +1,6 @@
+<scenes>
+    <scene id="Default" file="DefaultScene.xml"/>
+    <scene id="forest" file="Scene1.xml"/>
+    <scene id="scifi" file="Scene2.xml"/>
+    <scene id="snow" file="Scene3.xml"/>
+</scenes>

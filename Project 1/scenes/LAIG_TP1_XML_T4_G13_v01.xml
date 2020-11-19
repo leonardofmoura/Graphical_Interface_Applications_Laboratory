@@ -1,0 +1,1726 @@
+<lxs>
+    <scene root="salaBrincar" axis_length="5" />
+
+
+    <views default="defaultCamera" >
+        <perspective id="defaultCamera" near="0.1" far="500" angle="45">
+            <from x="30" y="15" z="30" />
+            <to x="0" y="-2" z="0" />
+        </perspective>
+
+        <ortho id="frontView"  near="0.2" far="100" left="-30" right="30" top="30" bottom="-30" >
+            <from x="0" y="20" z="20" />
+            <to x="0" y="-2" z="-20" />
+        </ortho>
+
+        <ortho id="sideView"  near="0.2" far="100" left="-30" right="30" top="30" bottom="-30" >
+            <from x="20" y="20" z="0" />
+            <to x="-20" y="-2" z="0" />
+        </ortho>
+
+        <perspective id="tableCamera" near="0.1" far="500" angle="45">
+            <from x="-13" y="15" z="7" />
+            <to x="-19" y="-2" z="-4" />
+        </perspective>
+
+        <perspective id="bedCamera" near="0.1" far="500" angle="45">
+            <from x="25" y="15" z="-5" />
+            <to x="0" y="-2" z="-30" />
+        </perspective>
+
+        <perspective id="bedSideTableCamera" near="0.1" far="500" angle="45">
+            <from x="-0" y="8" z="-20" />
+            <to x="8" y="-2" z="-30" />
+        </perspective>
+
+        <perspective id="toysCamera1" near="0.1" far="500" angle="45">
+            <from x="19" y="10" z="19" />
+            <to x="4-" y="-2" z="-4" />
+        </perspective>
+
+        <perspective id="toysCamera2" near="0.1" far="500" angle="45">
+            <from x="-18" y="10" z="5" />
+            <to x="-18" y="-2" z="20" />
+        </perspective>
+
+        <perspective id="doorCamera" near="0.1" far="500" angle="45">
+            <from x="-5" y="10" z="2" />
+            <to x="-5" y="5" z="20" />
+        </perspective>
+    </views>
+
+
+    <globals>
+        <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+        <background r="0.0" g="0.0" b="0.0" a="1.0" />
+    </globals>
+
+
+    <lights>
+        <omni id="candeeiroMesa1" enabled="1" >
+            <location x="3" y="5.5" z="-23" w="1.0" />
+            <ambient r="0" g="0" b="0" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+            <attenuation constant="0" linear="1" quadratic="0" />
+        </omni>
+
+         <spot id="candeeiroTecto1" enabled="1" angle="45" exponent="1">
+        <location x="-20" y="11.9" z="0" w="1.0" />
+        <target x="0" y="-5" z="0" />
+        <ambient r="0" g="0" b="0" a="1.0" />
+        <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+        <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+        <attenuation constant="0" linear="1" quadratic="0" />
+    </spot>
+
+        <spot id="candeeiroTecto2" enabled="1" angle="45" exponent="1">
+            <location x="0" y="11.9" z="0" w="1.0" />
+            <target x="0" y="-5" z="0" />
+            <ambient r="0" g="0" b="0" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+            <attenuation constant="0" linear="1" quadratic="0" />
+        </spot>
+
+        <spot id="candeeiroTecto3" enabled="1" angle="45" exponent="1">
+            <location x="20" y="11.9" z="0" w="1.0" />
+            <target x="0" y="-5" z="0" />
+            <ambient r="0" g="0" b="0" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+            <attenuation constant="0" linear="1" quadratic="0" />
+        </spot>
+    </lights>
+
+
+    <textures>
+        <!-- Textura do chão da sala-->
+        <texture id="woodFloorTexture" file="scenes/images_original/woodFloor.jpg" />
+
+        <!--Textura das paredes-->
+        <texture id="wallTexture" file="scenes/images_original/wallTexture.jpg"/>
+
+        <!--Textura da Arca de Brinquedos-->
+        <texture id="boxTexture" file="scenes/images_original/wood2Texture.jpg"/>
+
+        <!--Textura da Bola-->
+        <texture id="futebolTexture" file="scenes/images_original/futebol.jpg" />
+
+        <!-- Textura Bloco Super Mario-->
+        <texture id="marioBlockTexture" file="scenes/images_original/questionMark.jpg"/>
+
+        <!--Textura da Boia de brincar-->
+        <texture id="boiaTexture" file="scenes/images_original/boiaTexture.jpg"/>
+
+        <!-- Textura da mesa-->
+        <texture id="redWood" file="scenes/images_original/redWood.jpg"/>
+
+        <!-- Textura das cadeiras-->
+        <texture id="blueWood" file="scenes/images_original/blueWood.jpg"/>
+    </textures>
+
+
+    <materials>
+        <!--Material "Madeira" que é usada para o chão da sala mas pode ser usado também para outros pedaços de madeira-->
+        <material id="wood" shininess="5">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="1.0" g="1.0" b="1.0" a="1.0" />
+            <diffuse r="0.9" g="0.9" b="0.9" a="1.0" />
+            <specular r="0.1" g="0.1" b="0.1" a="1.0" />
+        </material>
+
+        <!-- Material da "Parede" -->
+        <material id="wall" shininess="5">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="1.0" g="1.0" b="1.0" a="1.0" />
+            <diffuse r="0.6" g="0.6" b="0.6" a="1.0" />
+            <specular r="0.6" g="0.6" b="0.6" a="1.0" />
+        </material>
+
+        <!-- Material "Cabedal" das bolas de futebol-->
+        <material id="leather" shininess="5">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="1.0" g="1.0" b="1.0" a="1.0" />
+            <diffuse r="0.6" g="0.6" b="0.6" a="1.0" />
+            <specular r="0.6" g="0.6" b="0.6" a="1.0" />
+        </material>
+
+        <!-- Material Plástico-->
+        <material id="plastic" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="1.0" g="1.0" b="1.0" a="1.0" />
+            <diffuse r="0.6" g="0.6" b="0.6" a="1.0" />
+            <specular r="0.6" g="0.6" b="0.6" a="1.0" />
+        </material>
+
+        <material id="bluePlastic" shininess="5">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0" g="0" b="1" a="1.0" />
+            <diffuse r="0" g="0" b="0.6" a="1.0" />
+            <specular r="0" g="0" b="0.6" a="1.0" />
+        </material>
+    </materials>
+
+
+    <transformations>
+        <transformation id="positionFloor">
+            <rotate axis="x" angle="-90" />
+            <scale x="50" y="50" z="0" />
+
+        </transformation>
+
+        <!--Escalamento e colocação da bola de futebol-->
+        <transformation id="futebolTransform">
+            <scale x="1" y="1" z="1" />
+            <translate x="4" y="1" z="3"/>
+        </transformation>
+    </transformations>
+
+
+    <primitives>
+        <primitive id="rectangle">
+            <rectangle x1="-0.5" y1="-0.5" x2="0.5" y2="0.5" />
+        </primitive >
+
+        <primitive id="sphere">
+            <sphere radius="1" slices="30" stacks="30" />
+        </primitive>
+
+        <primitive id="cylinder">
+            <cylinder base="1" top="1" height="1" slices="30" stacks="10" />
+        </primitive>
+
+        <primitive id="torus">
+            <torus inner="0.3" outer="1" slices="30" loops="30" />
+        </primitive>
+
+        <primitive id="circle">
+            <sphere radius="1" slices="30" stacks="10" />
+        </primitive>
+
+        <!--Triangulo equilátero-->
+        <primitive id="triangle">
+            <triangle   x1="0" y1="0.5" z1="0"
+                        x2="-0.5" y2="-0.5" z2="0"
+                        x3="0.5" y3="-0.5" z3="0" />
+        </primitive>
+    </primitives >
+
+
+    <components>
+        <!-- Chão da sala-->
+        <component id="woodFloor">
+            <transformation>
+                <transformationref id="positionFloor" />
+            </transformation>
+
+            <materials>
+                <material id="wood" />
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <!--Tecto-->
+        <component id="ceiling">
+            <transformation>
+                <translate x="0" y="20" z="0"/>
+                <rotate axis="x" angle="90" />
+                <scale x="50" y="50" z="0" />
+            </transformation>
+
+            <materials>
+                <material id="wall" />
+            </materials>
+
+            <texture id="none"/>
+
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+
+        <!-- Parede Eixo dos Z-->
+        <component id ="paredeEixoZ">
+            <transformation>
+                <translate x="-25" y="10" z="0" />
+                <rotate axis="y" angle="90" />
+                <scale x="50" y="20" z="1" />
+            </transformation>
+
+            <materials>
+                <material id="wall"/>
+            </materials>
+
+            <texture id="wallTexture" length_s="1" length_t="1"/>
+
+            <children>
+                <primitiveref id="rectangle"/>
+            </children>
+        </component>
+
+
+        <component id ="paredeEixoZ2">
+            <transformation>
+                <translate x="25" y="10" z="0" />
+                <rotate axis="y" angle="-90" />
+                <scale x="50" y="20" z="1" />
+            </transformation>
+
+            <materials>
+                <material id="wall"/>
+            </materials>
+
+            <texture id="wallTexture" length_s="1" length_t="1"/>
+
+            <children>
+                <primitiveref id="rectangle"/>
+            </children>
+        </component>
+
+
+        <!-- Parede Eixo X-->
+        <component id="paredeEixoX">
+        <transformation>
+            <translate x="0" y="10" z="-25" />
+            <scale x="50" y="20" z="1" />
+        </transformation>
+
+        <materials>
+            <material id="wall"/>
+        </materials>
+
+        <texture id="wallTexture" length_s="1" length_t="1"/>
+
+        <children>
+            <primitiveref id="rectangle"/>
+        </children>
+    </component>
+
+        <component id="paredeEixoX2">
+            <transformation>
+                <translate x="0" y="10" z="25" />
+                <rotate axis="y" angle="180"/>
+                <scale x="50" y="20" z="1" />
+            </transformation>
+
+            <materials>
+                <material id="wall"/>
+            </materials>
+
+            <texture id="wallTexture" length_s="1" length_t="1"/>
+
+            <children>
+                <primitiveref id="rectangle"/>
+            </children>
+        </component>
+
+
+        <!-- Seis componentes que corresponderão às 6 faces do cubo-->
+        <component id="paralelepipedoFace1">
+            <transformation>
+                <translate x="0" y="0" z="0.5" />
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <primitiveref id="rectangle"/>
+            </children>
+        </component>
+
+
+        <component id="paralelepipedoFace2">
+            <transformation>
+                <translate x="0.5" y="0" z="0" />
+                <rotate axis="y" angle="90" />
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <primitiveref id="rectangle"/>
+            </children>
+        </component>
+
+
+        <component id="paralelepipedoFace3">
+            <transformation>
+                <translate x="0" y="0" z="-0.5" />
+                <rotate axis="y" angle="180" />
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <primitiveref id="rectangle"/>
+            </children>
+        </component>
+
+
+        <component id="paralelepipedoFace4">
+            <transformation>
+                <translate x="-0.5" y="0" z="0" />
+                <rotate axis="y" angle="-90" />
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <primitiveref id="rectangle"/>
+            </children>
+        </component>
+
+
+        <component id="paralelepipedoFace5">
+            <transformation>
+                <translate x="0" y="-0.5" z="0" />
+                <rotate axis="x" angle="90" />
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <primitiveref id="rectangle"/>
+            </children>
+        </component>
+
+
+        <component id="paralelepipedoFace6">
+            <transformation>
+                <translate x="0" y="0.5" z="0" />
+                <rotate axis="x" angle="-90" />
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <primitiveref id="rectangle"/>
+            </children>
+        </component>
+
+
+        <!-- Paralelepípedo base, começando como um cubo -->
+        <component id="paralelepipedo">
+            <transformation>
+
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="paralelepipedoFace1"/>
+                <componentref id="paralelepipedoFace2"/>
+                <componentref id="paralelepipedoFace3"/>
+                <componentref id="paralelepipedoFace4"/>
+                <componentref id="paralelepipedoFace5"/>
+                <componentref id="paralelepipedoFace6"/>
+            </children>
+        </component>
+
+
+        <!--Cilindro Base para construir arca de brinquedos-->
+
+        <component id="parteCimaCilindro">
+            <transformation>
+                <translate x="0" y="0" z="1" />
+                <scale x="1" y="1" z="0.01" />
+            </transformation>
+            <materials>
+                <material id="inherit"/>
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="circle" />
+            </children>
+        </component>
+
+        <component id="parteBaixoCilindro">
+            <transformation>
+                <scale x="1" y="1" z="0.01" />
+            </transformation>
+            <materials>
+                <material id="inherit"/>
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="circle" />
+            </children>
+        </component>
+
+        <component id="CilindroFechado">
+            <transformation>
+                <translate x="0" y="0" z="0" />
+                <scale x="1" y="1" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit"/>
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="cylinder"/>
+                <componentref id="parteBaixoCilindro"/>
+                <componentref id="parteCimaCilindro"/>
+            </children>
+        </component>
+
+
+        <component id="parteCimaArca">
+            <transformation>
+                <translate x="1" y="1" z="0" />
+                <rotate axis="y" angle="-90" />
+                <scale x="0.5" y="0.5" z="2" />
+            </transformation>
+            <materials>
+                <material id="inherit"/>
+            </materials>
+                <texture id="inherit"/>
+            <children>
+                <componentref id="CilindroFechado"/>
+            </children>
+        </component>
+
+        <!--Paralelepipedo Base para construir arca de brinquedos -->
+        <component id="parteBaixoArca">
+            <transformation>
+                <translate x="0" y="0.5" z="0" />
+                <scale x="2" y="1" z="1" />
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+
+        <!-- arca de brinquedos-->
+        <component id="arcaBrinquedos">
+            <transformation>
+                <translate x="-10" y="0" z="-23"/>
+                <scale x="3" y="3" z="3" />
+            </transformation>
+
+            <materials>
+                <material id="wood"/>
+            </materials>
+
+            <texture id="boxTexture" length_s="1" length_t="1"/>
+
+            <children>
+                <componentref id="parteCimaArca"/>
+                <componentref id="parteBaixoArca"/>
+            </children>
+        </component>
+
+
+        <!-- Boia de brincar-->
+        <component id="boiaBrincar">
+            <transformation>
+                <translate x="10" y="0.9" z="10" />
+                <rotate axis="x" angle="-90" />
+                <scale x="3" y="3" z="3" />
+            </transformation>
+
+            <materials>
+                <material id="plastic"/>
+                <material id="bluePlastic"/>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="boiaTexture" length_s="1" length_t="1"/>
+
+            <children>
+                <primitiveref id="torus"/>
+            </children>
+        </component>
+
+
+        <!-- Tampo da Mesa-->
+        <component id="tampoMesa">
+            <transformation>
+                <translate x="0" y="4" z="0" />
+                <scale x="10" y="0.7" z="10" />
+
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+
+        <!--Pernas da mesa -->
+        <component id="pernaMesa">
+            <transformation>
+                <translate x="0" y="2" z="0" />
+                <scale x="0.7" y="4" z="0.7" />
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+
+        <component id="pernaMesa1">
+            <transformation>
+                <translate  x="-4" y="0" z="-4"/>
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="pernaMesa"/>
+            </children>
+        </component>
+
+
+        <component id="pernaMesa2">
+            <transformation>
+                <translate  x="-4" y="0" z="4"/>
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="pernaMesa"/>
+            </children>
+        </component>
+
+
+        <component id="pernaMesa3">
+            <transformation>
+                <translate  x="4" y="0" z="-4"/>
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="pernaMesa"/>
+            </children>
+        </component>
+
+
+        <component id="pernaMesa4">
+            <transformation>
+                <translate  x="4" y="0" z="4"/>
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="pernaMesa"/>
+            </children>
+        </component>
+
+
+        <component id="mesa">
+            <transformation>
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="pernaMesa1"/>
+                <componentref id="pernaMesa2"/>
+                <componentref id="pernaMesa3"/>
+                <componentref id="pernaMesa4"/>
+                <componentref id="tampoMesa"/>
+            </children>
+        </component>
+
+
+
+        <component id="mesaBrincar">
+            <transformation>
+                <translate  x="-20" y="0" z="0"/>
+            </transformation>
+
+            <materials>
+                <material id="wood"/>
+            </materials>
+
+            <texture id="redWood" length_s="5" length_t="5"/>
+
+            <children>
+                <componentref id="mesa"/>
+            </children>
+        </component>
+
+
+        <component id="mesaCabeceira1">
+            <transformation>
+                <translate  x="2.8" y="0" z="-22"/>
+                <scale x="0.5" y="1" z ="0.5"/>
+            </transformation>
+
+            <materials>
+                <material id="wood"/>
+            </materials>
+
+            <texture id="boxTexture" length_s="1" length_t="1"/>
+
+            <children>
+                <componentref id="mesa"/>
+            </children>
+        </component>
+
+        <component id="mesaCabeceira2">
+            <transformation>
+                <translate  x="15" y="0" z="-22"/>
+                <scale x="0.5" y="1" z ="0.5"/>
+            </transformation>
+
+            <materials>
+                <material id="wood"/>
+            </materials>
+
+            <texture id="boxTexture" length_s="1" length_t="1"/>
+
+            <children>
+                <componentref id="mesa"/>
+            </children>
+        </component>
+
+
+        <!--Cadeira-->
+        <!-- Tampo da cadeira irá derivar do tampo da mesa-->
+        <component id="tampoCadeira">
+            <transformation>
+                <translate x="0" y="2.5" z="0" />
+                <scale x="3" y="0.5" z="3" />
+
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+
+        <component id="costasCadeira">
+            <transformation>
+                <translate x="0" y="3.5" z="-1" />
+                <rotate axis="x" angle="-90" />
+                <scale x="3" y="0.5" z="3" />
+
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+
+        <component id="pernaCadeira">
+            <transformation>
+                <translate x="0" y="1" z="0" />
+                <scale x="0.7" y="2.5" z="0.7" />
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+
+        <component id="pernaCadeira1">
+            <transformation>
+                <translate x="-1" y="0" z="-1" />
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="pernaCadeira"/>
+            </children>
+        </component>
+
+
+        <component id="pernaCadeira2">
+            <transformation>
+                <translate x="-1" y="0" z="1" />
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="pernaCadeira"/>
+            </children>
+        </component>
+
+
+        <component id="pernaCadeira3">
+            <transformation>
+                <translate x="1" y="0" z="-1" />
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="pernaCadeira"/>
+            </children>
+        </component>
+
+
+        <component id="pernaCadeira4">
+            <transformation>
+                <translate x="1" y="0" z="1" />
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="pernaCadeira"/>
+            </children>
+        </component>
+
+
+        <component id="cadeira">
+            <transformation>
+                <translate x="-20" y="0" z="-6" />
+                <rotate axis="y" angle="30" />
+
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="blueWood" length_s="1" length_t="1"/>
+
+            <children>
+                <componentref id="tampoCadeira"/>
+                <componentref id="costasCadeira"/>
+                <componentref id="pernaCadeira1"/>
+                <componentref id="pernaCadeira2"/>
+                <componentref id="pernaCadeira3"/>
+                <componentref id="pernaCadeira4"/>
+            </children>
+        </component>
+
+
+        <!--Cubo Super Mario de Brincar-->
+        <component id="marioBlock">
+            <transformation>
+                <translate x="-17" y="5.25" z="1" />
+                <scale x="2" y="2" z="2"/>
+            </transformation>
+
+            <materials>
+                <material id="wood"/>
+            </materials>
+
+            <texture id="marioBlockTexture" length_s="1" length_t="1"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+
+        <!-- Bola de futebol-->
+        <component id ="bolaFutebol">
+            <transformation>
+                <transformationref id="futebolTransform"/>
+            </transformation>
+
+            <materials>
+                <material id="leather" />
+            </materials>
+
+            <texture id="futebolTexture" length_s="1" length_t="1"/>
+
+            <children>
+                <primitiveref id="sphere"/>
+            </children>
+        </component>
+
+        <!--Cama-->
+
+        <component id="pernaCama">
+            <transformation>
+                <translate x="0" y="0.75" z="0" />
+                <scale x="1" y="1.5" z="1" />
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+        <component id="pernaCama1">
+            <transformation>
+                <translate x="2" y="0" z="1" />
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="pernaCama"/>
+            </children>
+        </component>
+
+        <component id="pernaCama2">
+            <transformation>
+                <translate x="-2" y="0" z="1" />
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="pernaCama"/>
+            </children>
+        </component>
+
+        <component id="pernaCama3">
+            <transformation>
+                <translate x="-2" y="0" z="-6" />
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="pernaCama"/>
+            </children>
+        </component>
+
+        <component id="pernaCama4">
+            <transformation>
+                <translate x="2" y="0" z="-6" />
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="pernaCama"/>
+            </children>
+        </component>
+
+        <component id="tampoCama">
+            <transformation>
+                <translate x="0" y="1.5" z="-2.5" />
+                <scale x="5" y="0.5" z="10" />
+
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+        <component id="costasCama">
+            <transformation>
+                <translate x="0" y="3.5" z="-7.25" />
+                <rotate axis="x" angle="-90" />
+                <scale x="5" y="0.5" z="4" />
+
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+        <component id="colchaobaixo">
+            <transformation>
+                <translate x="0" y="2.5" z="-1" />
+                <scale x="4.5" y="1.5" z="7" />
+
+            </transformation>
+
+            <materials>
+                <material id="plastic"/>
+                <material id="bluePlastic"/>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="none"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+
+        <component id="colchaocima">
+            <transformation>
+                <translate x="0" y="2.5" z="-5.9" />
+                <scale x="4.5" y="1.5" z="2.9" />
+
+            </transformation>
+
+            <materials>
+                <material id="leather"/>
+            </materials>
+
+            <texture id="none"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+
+        <component id="cama">
+            <transformation>
+                <translate x="9" y="0" z="-14" />
+                <scale x="1.5" y="1.5" z="1.5" />
+
+            </transformation>
+
+            <materials>
+                <material id="wood"/>
+            </materials>
+
+            <texture id="boxTexture"/>
+
+            <children>
+                <componentref id="pernaCama1"/>
+                <componentref id="pernaCama2"/>
+                <componentref id="pernaCama3"/>
+                <componentref id="pernaCama4"/>
+                <componentref id="tampoCama"/>
+                <componentref id="costasCama"/>
+                <componentref id="colchaobaixo"/>
+                <componentref id="colchaocima"/>
+            </children>
+        </component>
+
+
+        <!--Candeeiro-->
+        <component id ="triangulo">
+            <transformation>
+
+                <translate x="0" y="1" z="0" />
+                <scale x="3" y="2" z="1.5"/>
+
+            </transformation>
+
+            <materials>
+                <material id="bluePlastic" />
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <primitiveref id="triangle"/>
+            </children>
+        </component>
+
+        <component id ="ladoPiramide1">
+            <transformation>
+                <translate x="0" y="0" z="-1.5" />
+
+                <rotate axis="x" angle="45"/>
+            </transformation>
+
+            <materials>
+                <material id="bluePlastic" />
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="triangulo"/>
+            </children>
+        </component>
+
+        <component id ="ladoPiramide2">
+            <transformation>
+                <rotate axis="y" angle="-90"/>
+            </transformation>
+
+            <materials>
+                <material id="bluePlastic" />
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="ladoPiramide1"/>
+            </children>
+        </component>
+
+        <component id ="ladoPiramide3">
+            <transformation>
+                <rotate axis="y" angle="-180"/>
+            </transformation>
+
+            <materials>
+                <material id="bluePlastic" />
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="ladoPiramide1"/>
+            </children>
+        </component>
+
+        <component id ="ladoPiramide4">
+            <transformation>
+                <rotate axis="y" angle="90"/>
+            </transformation>
+
+            <materials>
+                <material id="bluePlastic" />
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="ladoPiramide1"/>
+            </children>
+        </component>
+
+        <component id ="caboCandeeiro">
+            <transformation>
+                <translate x="0" y="8" z="0" />
+                <rotate axis="x" angle="90"/>
+                <scale x="0.1" y="0.1" z="8"/>
+            </transformation>
+
+            <materials>
+                <material id="bluePlastic" />
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="CilindroFechado"/>
+            </children>
+        </component>
+
+
+
+        <component id ="candeeiro">
+            <transformation>
+
+            </transformation>
+
+            <materials>
+                <material id="bluePlastic" />
+            </materials>
+
+            <texture id="none"/>
+
+            <children>
+                <componentref id="ladoPiramide1"/>
+                <componentref id="ladoPiramide2"/>
+                <componentref id="ladoPiramide3"/>
+                <componentref id="ladoPiramide4"/>
+                <componentref id="caboCandeeiro"/>
+            </children>
+        </component>
+
+
+        <component id ="candeeiro1">
+            <transformation>
+                <translate x="-20" y="11.9" z="0" />
+            </transformation>
+
+            <materials>
+                <material id="bluePlastic" />
+            </materials>
+
+            <texture id="none"/>
+
+            <children>
+                <componentref id="candeeiro"/>
+            </children>
+        </component>
+
+        <component id ="candeeiro2">
+            <transformation>
+                <translate x="0" y="11.9" z="0" />
+            </transformation>
+
+            <materials>
+                <material id="bluePlastic" />
+            </materials>
+
+            <texture id="none"/>
+
+            <children>
+                <componentref id="candeeiro"/>
+            </children>
+        </component>
+
+        <component id ="candeeiro3">
+            <transformation>
+                <translate x="20" y="11.9" z="0" />
+            </transformation>
+
+            <materials>
+                <material id="bluePlastic" />
+            </materials>
+
+            <texture id="none"/>
+
+            <children>
+                <componentref id="candeeiro"/>
+            </children>
+        </component>
+
+
+        <!-- Candeeiro de Design-->
+
+        <component id ="baseCandeeiroDesign">
+            <transformation>
+                <translate x="0" y="0.125" z="0"/>
+                <scale x="1" y="0.25" z="2"/>
+
+            </transformation>
+
+            <materials>
+                <material id="inherit" />
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+        <component id ="bracoCandeeiroDesign1">
+            <transformation>
+                <translate x="0" y="1" z="-1"/>
+                <rotate axis="x" angle="60"/>
+                <scale x="1" y="0.25" z="2"/>
+
+            </transformation>
+
+            <materials>
+                <material id="inherit" />
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+        <component id ="bracoCandeeiroDesign2">
+            <transformation>
+                <translate x="0" y="1.7" z="-0.8"/>
+                <rotate axis="x" angle="150"/>
+                <scale x="1" y="0.25" z="2"/>
+
+            </transformation>
+
+            <materials>
+                <material id="inherit" />
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+
+
+
+        <component id ="candeeiroDesign">
+            <transformation>
+                <translate x="3" y="4.25" z="-23"/>
+
+
+            </transformation>
+
+            <materials>
+                <material id="wood" />
+            </materials>
+
+            <texture id="blueWood" length_s="1" length_t="1"/>
+
+            <children>
+                <componentref id ="baseCandeeiroDesign"/>
+                <componentref id ="bracoCandeeiroDesign1"/>
+                <componentref id ="bracoCandeeiroDesign2"/>
+            </children>
+        </component>
+
+        <component id ="portamadeira">
+            <transformation>
+                <translate x="0" y="7" z="0"/>
+                <scale x="10" y="15" z="1"/>
+
+            </transformation>
+
+            <materials>
+                <material id="wood" />
+            </materials>
+
+            <texture id="boxTexture" length_s="1" length_t="1"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+        <component id ="portamacaneta1">
+            <transformation>
+                <translate x="-4" y="7" z="1"/>
+                <scale x="0.5" y="0.5" z="0.5"/>
+
+            </transformation>
+
+            <materials>
+                <material id="wood"/>
+            </materials>
+
+            <texture id="none"/>
+
+            <children>
+                <primitiveref id="sphere"/>
+            </children>
+        </component>
+
+        <component id ="portamacaneta2">
+            <transformation>
+                <translate x="-4" y="7" z="-1"/>
+                <scale x="0.5" y="0.5" z="0.5"/>
+
+            </transformation>
+
+            <materials>
+                <material id="wood"/>
+            </materials>
+
+            <texture id="none"/>
+
+            <children>
+                <primitiveref id="sphere"/>
+            </children>
+        </component>
+
+        <component id ="porta">
+            <transformation>
+                <translate x="-5" y="0" z="25"/>
+
+            </transformation>
+
+            <materials>
+                <material id="wood" />
+            </materials>
+
+            <texture id="boxTexture" length_s="1" length_t="1"/>
+
+            <children>
+                <componentref id="portamadeira"/>
+                <componentref id="portamacaneta1"/>
+                <componentref id="portamacaneta2"/>
+            </children>
+        </component>
+
+        <!--Boneco Azul-->
+
+        <component id ="bonecoTronco">
+            <transformation>
+                <translate x="0" y="7" z="0"/>
+                <scale x="2" y="3" z="1"/>
+
+            </transformation>
+
+            <materials>
+                <material id="inherit" />
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+        <component id ="bonecoBraco1">
+            <transformation>
+                <translate x="-1.5" y="7" z="-0.25"/>
+                <rotate axis="x" angle="30"/>
+                <scale x="1" y="2" z="1"/>
+
+            </transformation>
+
+            <materials>
+                <material id="inherit" />
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+        <component id ="bonecoBraco2">
+            <transformation>
+                <translate x="1.5" y="7" z="0.25"/>
+                <rotate axis="x" angle="-30"/>
+                <scale x="1" y="2" z="1"/>
+
+            </transformation>
+
+            <materials>
+                <material id="inherit" />
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+        <component id ="bonecoCabeca">
+            <transformation>
+                <translate x="0" y="9" z="0"/>
+                <scale x="1" y="1" z="1"/>
+
+            </transformation>
+
+            <materials>
+                <material id="inherit" />
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+
+        <component id ="bonecoPerna1">
+            <transformation>
+                <translate x="-0.5" y="5" z="-0.25"/>
+                <rotate axis="x" angle="30"/>
+                <scale x="1" y="2" z="1"/>
+
+            </transformation>
+
+            <materials>
+                <material id="inherit" />
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+        <component id ="bonecoPerna2">
+            <transformation>
+                <translate x="0.5" y="5" z="0.25"/>
+                <rotate axis="x" angle="-30"/>
+                <scale x="1" y="2" z="1"/>
+
+            </transformation>
+
+            <materials>
+                <material id="inherit" />
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="paralelepipedo"/>
+            </children>
+        </component>
+
+        <component id ="boneco">
+            <transformation>
+                <translate x="0" y="-4" z="0"/>
+
+            </transformation>
+
+            <materials>
+                <material id="inherit"/>
+            </materials>
+
+            <texture id="inherit"/>
+
+            <children>
+                <componentref id="bonecoTronco"/>
+                <componentref id="bonecoBraco1"/>
+                <componentref id="bonecoBraco2"/>
+                <componentref id="bonecoCabeca"/>
+                <componentref id="bonecoPerna1"/>
+                <componentref id="bonecoPerna2"/>
+
+            </children>
+        </component>
+
+        <component id ="boneco1">
+            <transformation>
+                <translate x="-15" y="0" z="20"/>
+                <scale x="0.5" y="0.5" z="0.5"/>
+
+
+            </transformation>
+
+            <materials>
+                <material id="bluePlastic"/>
+            </materials>
+
+            <texture id="none"/>
+
+            <children>
+                <componentref id="boneco"/>
+
+            </children>
+        </component>
+
+        <component id ="boneco2">
+            <transformation>
+                <translate x="-15" y="0" z="18"/>
+                <rotate axis="y" angle="30"/>
+                <scale x="0.5" y="0.5" z="0.5"/>
+
+
+            </transformation>
+
+            <materials>
+                <material id="bluePlastic"/>
+            </materials>
+
+            <texture id="none"/>
+
+            <children>
+                <componentref id="boneco"/>
+
+            </children>
+        </component>
+
+        <component id ="boneco3">
+            <transformation>
+                <translate x="-17" y="0" z="15"/>
+                <rotate axis="y" angle="45"/>
+                <scale x="0.5" y="0.5" z="0.5"/>
+
+
+            </transformation>
+
+            <materials>
+                <material id="bluePlastic"/>
+            </materials>
+
+            <texture id="none"/>
+
+            <children>
+                <componentref id="boneco"/>
+
+            </children>
+        </component>
+
+        <component id ="boneco4">
+            <transformation>
+                <translate x="-20" y="0" z="20"/>
+                <rotate axis="y" angle="90"/>
+                <scale x="0.5" y="0.5" z="0.5"/>
+
+
+            </transformation>
+
+            <materials>
+                <material id="bluePlastic"/>
+            </materials>
+
+            <texture id="none"/>
+
+            <children>
+                <componentref id="boneco"/>
+
+            </children>
+        </component>
+
+
+
+
+
+        <!-- ROOT-->
+        <component id ="salaBrincar">
+            <transformation>
+                <!-- none    -->
+            </transformation>
+
+            <materials>
+                <material id="wood"/>
+            </materials>
+
+            <texture id="boxTexture"/>
+
+            <children>
+                <componentref id="woodFloor"/>
+                <componentref id="ceiling"/>
+                <componentref id ="paredeEixoZ"/>
+                <componentref id ="paredeEixoZ2"/>
+                <componentref id="paredeEixoX"/>
+                <componentref id="paredeEixoX2"/>
+                <componentref id="arcaBrinquedos"/>
+                <componentref id="boiaBrincar"/>
+                <componentref id="mesaBrincar"/>
+                <componentref id="cadeira"/>
+                <componentref id="marioBlock"/>
+                <componentref id ="bolaFutebol"/>
+                <componentref id="candeeiro1"/>
+                <componentref id="candeeiro2"/>
+                <componentref id="candeeiro3"/>
+                <componentref id="cama"/>
+                <componentref id="mesaCabeceira1"/>
+                <componentref id="mesaCabeceira2"/>
+                <componentref id="candeeiroDesign"/>
+                <componentref id="porta"/>
+                <componentref id="boneco1"/>
+                <componentref id="boneco2"/>
+                <componentref id="boneco3"/>
+                <componentref id="boneco4"/>
+            </children>
+        </component>
+    </components>
+</lxs>
