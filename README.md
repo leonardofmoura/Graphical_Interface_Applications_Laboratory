@@ -6,6 +6,14 @@ The course focuses in the development of three projects that more advanced compu
 
 All projects were developed with my partner [André Santos](https://github.com/AndreLopesSantos).
 
+Projects should be run using a web server. One way to do this is to start a python web server in the folder that we want to execute:
+
+```
+python3 -m http.server 8080
+```
+
+The server will be available on `localhost:8080`
+
 ### Project 1 - Development of a Graphical Engine in WebGL
 
 Creation of a Graphic Engine that displays a scene, parsing an XML file. The parser creates a [scene graph](https://en.wikipedia.org/wiki/Scene_graph#Scene_graphs_in_games_and_3D_applications) using the primitives, textures, materials, lights and cameras supported. 
